@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+        <h:head>
+             <title>#{str.cancionListTitle}</title>
+        </h:head>
+
+        <h:body>
+            <ui:composition template="/templates/template.xhtml">
+                <ui:define name="contenido">
+                    <h1>#{str.cancionListTitle}</h1>
+                    <h:form>
+                        <p:commandButton value="#{str.buttonAdd}" action="#{cancionBean.iniciar()}"></p:commandButton>
+                    </h:form>
+                    <p:dataTable value="#{cancionBean.canciones}" var="c">
+                        <p:column headerText="#{str.action}">
+                            <h:form>
+                                <p:commandButton value="#{str.buttonEdit}" action="#{cancionBean.editar(c)}"></p:commandButton>
+                            </h:form>
+                        </p:column>
+                        <p:column headerText="#{str.cancionesNameHeader}">
+                            <p:outputLabel value="#{c.nombreCancion}"></p:outputLabel>
+                        </p:column>
+                        
+                         <p:column headerText="#{str.cantanteHeader}">
+                             <p:outputLabel value="#{c.cantante}"></p:outputLabel>
+                        </p:column>
+                        
+                        <p:column headerText="#{str.albumHeader}">
+                            <p:outputLabel value="#{c.album}"></p:outputLabel>
+                        </p:column>
+                        
+                         <p:column headerText="#{str.generoHeader}">
+                             <p:outputLabel value="#{c.genero}"></p:outputLabel>
+                        </p:column>
+                        
+                        
+                        
+                        <p:column headerText="#{str.autorHeader}">
+                            <p:outputLabel value="#{c.autor.nombre}"></p:outputLabel>
+                        </p:column>
+                    </p:dataTable>
+                </ui:define>
+            </ui:composition>
+        </h:body>
+</html>

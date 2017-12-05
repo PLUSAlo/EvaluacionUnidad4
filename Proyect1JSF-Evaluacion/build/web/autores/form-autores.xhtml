@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>#{str.autorFormTitle}</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/template.xhtml">
+            <ui:define name="contenido">
+                <h2>#{str.autorFormHeader}</h2>
+                <p:fieldset legend="#{str.autorLegendForm}">
+                <h:form>
+                    <h:panelGrid columns="1">
+                        <p:inputText placeholder="#{str.autorNamePrompt}" value="#{autorBean.autor.nombre}"></p:inputText>
+                    
+                        <p:inputText placeholder="#{str.autorPrompt}" value="#{autorBean.autor.estado}"></p:inputText>
+                        <p:inputText placeholder="#{str.prestigioPrompt}" value="#{autorBean.autor.prestigio}"></p:inputText>
+                    </h:panelGrid>
+                    <p:commandButton value="#{str.buttonSave}" action="#{autorBean.guardar()}"></p:commandButton>
+                    <p:commandButton value="#{str.buttonDelete}" action="#{autorBean.eliminar()}"></p:commandButton>
+                    <p:commandButton value="#{str.buttonCancel}" action="#{autorBean.cancelar()}"></p:commandButton>
+                
+                </h:form>
+                </p:fieldset>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

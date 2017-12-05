@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+        <h:head>
+             <title>#{str.libroListTitle}</title>
+        </h:head>
+
+        <h:body>
+            <ui:composition template="/templates/template.xhtml">
+                <ui:define name="contenido">
+                    <h1>#{str.libroListTitle}</h1>
+                    <h:form>
+                        <p:commandButton value="#{str.buttonAdd}" action="#{libroBean.iniciar()}"></p:commandButton>
+                    </h:form>
+                    <p:dataTable value="#{libroBean.libros}" var="L">
+                        <p:column headerText="#{str.action}">
+                            <h:form>
+                                <p:commandButton value="#{str.buttonEdit}" action="#{libroBean.editar(L)}"></p:commandButton>
+                            </h:form>
+                        </p:column>
+                        <p:column headerText="#{str.librosNameHeader}">
+                            <p:outputLabel value="#{L.nombreLibro}"></p:outputLabel>
+                        </p:column>
+                        
+                         <p:column headerText="#{str.edicionHeader}">
+                            <p:outputLabel value="#{L.edicion}"></p:outputLabel>
+                        </p:column>
+                        
+                         <p:column headerText="#{str.editorialHeader}">
+                             <p:outputLabel value="#{L.editorial}"></p:outputLabel>
+                        </p:column>
+                        
+                        
+                        
+                        <p:column headerText="#{str.autorHeader}">
+                            <p:outputLabel value="#{L.autor.nombre}"></p:outputLabel>
+                        </p:column>
+                    </p:dataTable>
+                </ui:define>
+            </ui:composition>
+        </h:body>
+</html>
